@@ -1,0 +1,12 @@
+[build-options]
+  observabilityIncluded = true
+
+[package]
+  distribution = "2201.3.1"
+  export = ["rdbms_data_as_rest_api"]
+  icon = "docs/icon.png"
+  keywords = ["Kind/Sample","Type/Service","Category/Service","Internal/http"]
+  name = "rdbms_data_as_rest_api"
+  org = "choreopmm"
+  version = "3.1.1"
+
