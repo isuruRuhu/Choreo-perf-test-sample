@@ -1,7 +1,8 @@
 import ballerina/http;
 import ballerina/sql;
 import ballerinax/mysql.driver as _;
-import ballerinax/mysql;
+import ballerinax/java.jdbc as jdbc;
+// import ballerinax/mysql;
 
 // Types
 type Employee record {|
@@ -13,15 +14,21 @@ type Employee record {|
 |};
 
 // MySQL configuration parameters
-configurable string host = ?;
-configurable int port = ?;
-configurable string user = ?;
-configurable string password = ?;
-configurable string database = ?;
+// configurable string host = ?;
+// configurable int port = ?;
+// configurable string user = ?;
+// configurable string password = ?;
+// configurable string database = ?;
 
-final mysql:Client mysqlClient = check new (host = host, port = port, user = user, password = password,
-                                            database = database);
+configurable string dbUrl = ?;
+configurable string dbUsername = ?;
+configurable string dbPassword = ?;
 
+// final mysql:Client mysqlClient = check new (host = host, port = port, user = user, password = password,
+//                                             database = database);
+
+final jdbc:Client mysqlClient = check new (url = dbUrl, user = dbUsername, password = dbPassword);
+                                
 service /company on new http:Listener(8090) {
 
     isolated resource function post employees(@http:Payload Employee payload) returns error? {

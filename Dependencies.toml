@@ -5,7 +5,7 @@
 
 [ballerina]
 dependencies-toml-version = "2"
-distribution-version = "2201.6.0"
+distribution-version = "2201.5.0"
 
 [[package]]
 org = "ballerina"
@@ -295,17 +295,17 @@ modules = [
 
 [[package]]
 org = "ballerinax"
-name = "mysql"
+name = "java.jdbc"
 version = "1.9.0"
 dependencies = [
-	{org = "ballerina", name = "crypto"},
 	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "jballerina.java"},
+	{org = "ballerina", name = "lang.string"},
 	{org = "ballerina", name = "sql"},
 	{org = "ballerina", name = "time"}
 ]
 modules = [
-	{org = "ballerinax", packageName = "mysql", moduleName = "mysql"}
+	{org = "ballerinax", packageName = "java.jdbc", moduleName = "java.jdbc"}
 ]
 
 [[package]]
@@ -324,7 +324,7 @@ dependencies = [
 	{org = "ballerina", name = "http"},
 	{org = "ballerina", name = "sql"},
 	{org = "ballerinai", name = "observe"},
-	{org = "ballerinax", name = "mysql"},
+	{org = "ballerinax", name = "java.jdbc"},
 	{org = "ballerinax", name = "mysql.driver"}
 ]
 modules = [
