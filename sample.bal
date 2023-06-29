@@ -2,7 +2,6 @@ import ballerina/http;
 import ballerina/sql;
 import ballerinax/mysql.driver as _;
 import ballerinax/java.jdbc as jdbc;
-// import ballerinax/mysql;
 
 // Types
 type Employee record {|
@@ -13,19 +12,9 @@ type Employee record {|
      string designation;
 |};
 
-// MySQL configuration parameters
-// configurable string host = ?;
-// configurable int port = ?;
-// configurable string user = ?;
-// configurable string password = ?;
-// configurable string database = ?;
-
 configurable string dbUrl = ?;
 configurable string dbUsername = ?;
 configurable string dbPassword = ?;
-
-// final mysql:Client mysqlClient = check new (host = host, port = port, user = user, password = password,
-//                                             database = database);
 
 final jdbc:Client mysqlClient = check new (url = dbUrl, user = dbUsername, password = dbPassword);
                                 

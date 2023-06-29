@@ -1,12 +1,8 @@
 [build-options]
-  observabilityIncluded = true
+observabilityIncluded = true
 
 [package]
-  distribution = "2201.5.0"
-  export = ["choreo_perf_test_sample"]
-  icon = "docs/icon.png"
-  keywords = ["Kind/Sample","Type/Service","Category/Service","Internal/http"]
-  name = "choreo_perf_test_sample"
-  org = "choreopmm"
-  version = "3.1.1"
-
+distribution = "2201.5.0"
+name = "choreo_perf_test_sample"
+org = "choreopmm"
+version = "3.1.1"
