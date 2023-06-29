@@ -3,10 +3,10 @@
 
 [package]
   distribution = "2201.3.1"
-  export = ["rdbms_data_as_rest_api"]
+  export = ["choreo_perf_test_sample"]
   icon = "docs/icon.png"
   keywords = ["Kind/Sample","Type/Service","Category/Service","Internal/http"]
-  name = "rdbms_data_as_rest_api"
+  name = "choreo_perf_test_sample"
   org = "choreopmm"
   version = "3.1.1"
 
