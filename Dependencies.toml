@@ -318,7 +318,7 @@ modules = [
 
 [[package]]
 org = "choreopmm"
-name = "rdbms_data_as_rest_api"
+name = "choreo_perf_test_sample"
 version = "3.1.1"
 dependencies = [
 	{org = "ballerina", name = "http"},
@@ -328,6 +328,6 @@ dependencies = [
 	{org = "ballerinax", name = "mysql.driver"}
 ]
 modules = [
-	{org = "choreopmm", packageName = "rdbms_data_as_rest_api", moduleName = "rdbms_data_as_rest_api"}
+	{org = "choreopmm", packageName = "choreo_perf_test_sample", moduleName = "choreo_perf_test_sample"}
 ]
 
