@@ -1,7 +1,7 @@
 import ballerina/http;
 import ballerina/sql;
-import ballerinax/mysql.driver as _;
-import ballerinax/java.jdbc as jdbc;
+import ballerinax/mssql.driver as _;
+import ballerinax/mssql as mssql;
 
 // Types
 type Employee record {|
@@ -12,11 +12,12 @@ type Employee record {|
      string designation;
 |};
 
-configurable string dbUrl = ?;
-configurable string dbUsername = ?;
+configurable string dbHost = ?;
+configurable string dbUser = ?;
 configurable string dbPassword = ?;
+configurable string dbName = ?;
 
-final jdbc:Client mysqlClient = check new (url = dbUrl, user = dbUsername, password = dbPassword);
+final mssql:Client dbClient = check new (host = dbHost, user = dbUser, password = dbPassword, database = dbName, port = 1433);
                                 
 service /company on new http:Listener(8090) {
 
@@ -24,7 +25,7 @@ service /company on new http:Listener(8090) {
         sql:ParameterizedQuery insertQuery = `INSERT INTO employees VALUES (${payload.employeeId},
                                               ${payload.firstName}, ${payload?.lastName},${payload.email},
                                               ${payload.designation})`;
-        sql:ExecutionResult _ = check mysqlClient->execute(insertQuery);
+        sql:ExecutionResult _ = check dbClient->execute(insertQuery);
     }
 
     isolated resource function put employees(@http:Payload Employee payload) returns error? {
@@ -32,12 +33,12 @@ service /company on new http:Listener(8090) {
                                              lastName=${payload?.lastName}, email=${payload.email},
                                              designation=${payload.designation} where
                                              employeeId= ${payload.employeeId}`;
-        sql:ExecutionResult _ = check mysqlClient->execute(updateQuery);
+        sql:ExecutionResult _ = check dbClient->execute(updateQuery);
     }
     
     isolated resource function get employees(string designation) returns json|error {
         sql:ParameterizedQuery selectQuery = `select * from employees where designation=${designation}`;
-        stream <Employee, sql:Error?> resultStream = mysqlClient->query(selectQuery);
+        stream <Employee, sql:Error?> resultStream = dbClient->query(selectQuery);
         Employee[] employees = [];
 
         check from Employee employee in resultStream
@@ -49,7 +50,7 @@ service /company on new http:Listener(8090) {
 
     isolated resource function delete employees(int employeeId) returns error? {
         sql:ParameterizedQuery deleteQuery = `DELETE FROM employees WHERE employeeId = ${employeeId}`;
-        sql:ExecutionResult _ = check mysqlClient->execute(deleteQuery);
+        sql:ExecutionResult _ = check dbClient->execute(deleteQuery);
     }
 
 }

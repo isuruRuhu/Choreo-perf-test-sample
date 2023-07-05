@@ -295,25 +295,24 @@ modules = [
 
 [[package]]
 org = "ballerinax"
-name = "java.jdbc"
+name = "mssql"
 version = "1.9.0"
 dependencies = [
-	{org = "ballerina", name = "io"},
+	{org = "ballerina", name = "crypto"},
 	{org = "ballerina", name = "jballerina.java"},
-	{org = "ballerina", name = "lang.string"},
 	{org = "ballerina", name = "sql"},
 	{org = "ballerina", name = "time"}
 ]
 modules = [
-	{org = "ballerinax", packageName = "java.jdbc", moduleName = "java.jdbc"}
+	{org = "ballerinax", packageName = "mssql", moduleName = "mssql"}
 ]
 
 [[package]]
 org = "ballerinax"
-name = "mysql.driver"
+name = "mssql.driver"
 version = "1.4.1"
 modules = [
-	{org = "ballerinax", packageName = "mysql.driver", moduleName = "mysql.driver"}
+	{org = "ballerinax", packageName = "mssql.driver", moduleName = "mssql.driver"}
 ]
 
 [[package]]
@@ -324,8 +323,8 @@ dependencies = [
 	{org = "ballerina", name = "http"},
 	{org = "ballerina", name = "sql"},
 	{org = "ballerinai", name = "observe"},
-	{org = "ballerinax", name = "java.jdbc"},
-	{org = "ballerinax", name = "mysql.driver"}
+	{org = "ballerinax", name = "mssql"},
+	{org = "ballerinax", name = "mssql.driver"}
 ]
 modules = [
 	{org = "choreopmm", packageName = "choreo_perf_test_sample", moduleName = "choreo_perf_test_sample"}
